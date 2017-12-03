@@ -33,7 +33,6 @@ def solve2(number):
                         if not(x_d == 0 and y_d == 0):
                             if (x+x_d, y+y_d) in mem:
                                 mem[(x, y)] += mem[(x+x_d, y+y_d)]
-                print(((x,y), mem[(x, y)]))
                 if mem[(x, y)] >= number:
                     return mem[(x, y)]
                 
