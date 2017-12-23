@@ -45,10 +45,32 @@ def run(instructions, debug):
     else:
         return count
 
+def count_composites(start, end, step):
+    primes = generate_primes(end)
+    count = 0
+    for i in range(start, end, step):
+        if i not in primes:
+            count += 1
+    return count
+
+def generate_primes(max_num):
+    numbers = set(range(max_num, 1, -1))
+    primes = []
+    while numbers:
+        p = numbers.pop()
+        primes.append(p)
+        numbers.difference_update(range(p*2, max_num+1, p))
+    return primes
+
 if __name__ == '__main__':
     with open('day23/input.txt') as f:
         instructions = f.readlines()
     
     execute = run(instructions, False)
     print(execute)
-    
+
+    b = 81 * 100 + 100000
+    c = b + 17000
+
+    primes = count_composites(b, c+1, 17)
+    print(primes)
