@@ -11,7 +11,6 @@ def solve(links):
     strongest_bridge = 0
     for root in graph[0]:
         visited = [(0, root)]
-        longest = [[(0, root)]]
         strongest_bridge = max(strongest_bridge, strongest(graph, visited))
     
     return strongest_bridge
